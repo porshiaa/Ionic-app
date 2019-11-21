@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>gallery</ion-title>
+    <ion-title>
+      Gallery
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<p>hi</p>
+    <ion-list>
+
+  <ion-card *ngFor="let x of users;let i=index">
+    <ion-card-header>
+      <ion-card-subtitle>{{x.location.city}}, {{x.location.country}}</ion-card-subtitle>
+      <ion-card-title>{{x.name.first}} {{x.name.last}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-img [src]="x.picture.large"></ion-img>
+      <p>Contact at: {{x.email}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-list>
 </ion-content>
