@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>
+      Login
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<ion-item>
+  <ion-input type = "text" >
+  <ion-label position="floating">Username</ion-label>
+  </ion-input>
+</ion-item>
+<ion-item>
+<ion-input type = "password">
+    <ion-label position="floating">Password</ion-label>
+  </ion-input>
+</ion-item>
+<ion-item>
+  <ion-button (click)="goToGallery()">Submit</ion-button>
+</ion-item>
 </ion-content>
