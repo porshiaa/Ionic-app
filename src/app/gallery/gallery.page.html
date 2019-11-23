@@ -12,14 +12,16 @@
       </ion-buttons>
     <ion-list>
 
-  <ion-card *ngFor="let x of users;let i=index">
+  <ion-card *ngFor="let pokemon of pokedex; let i=index" (click) ="openDetails(pokemon)">
     <ion-card-header>
-      <ion-card-subtitle>{{x.location.city}}, {{x.location.country}}</ion-card-subtitle>
-      <ion-card-title>{{x.name.first}} {{x.name.last}}</ion-card-title>
+      <ion-card-subtitle>Artist: {{pokemon.artist}}</ion-card-subtitle>
+      <ion-card-title>{{pokemon.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-        <ion-img [src]="x.picture.large"></ion-img>
-      <p>Contact at: {{x.email}}</p>
+        <ion-img [src]="pokemon.imageUrl"></ion-img>
+        <br>
+      <p><strong>Supertype:</strong> {{pokemon.supertype}}</p>
+      <p><strong>Subtype:</strong> {{pokemon.subtype}}</p>
     </ion-card-content>
   </ion-card>
 </ion-list>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { Router, NavigationExtras } from '@angular/router';
+
 
 
 @Component({
@@ -10,17 +13,23 @@ import { MenuController } from '@ionic/angular';
 })
 export class GalleryPage implements OnInit {
 
-  users: any[]=[];
+  pokedex: any[]=[];
+  pokemon: ""
 
-  constructor(public http: HttpClient, private menu: MenuController) {
-    
-    this.http.get("https://randomuser.me/api/?results=20").subscribe(data=>{
-      this.users = data["results"]
-      console.log(this.users)
-      
-      })
+  // users: any[]=[];
 
+  constructor(public http: HttpClient, private menu: MenuController, public nav: NavController,
+    private router: Router) {
     
+    // this.http.get("https://randomuser.me/api/?results=20").subscribe(data=>{
+    //   this.users = data["results"]
+      // console.log(this.users) 
+      // })
+
+    this.http.get("https://api.pokemontcg.io/v1/cards").subscribe(data=>{
+      this.pokedex = data['cards'];
+
+    });
 
 }
 
@@ -29,6 +38,19 @@ ionViewWillEnter(){
 }
 
 ngOnInit() {
+}
+
+public openDetails(pokemon){
+  let navigationExtras: NavigationExtras ={
+  queryParams: {
+    pokemon: JSON.stringify(pokemon),
+    }
+  }
+  this.nav.navigateForward(['details'], navigationExtras);
+  // console.log(pokemon)
+
+
+
 }
 
    }
