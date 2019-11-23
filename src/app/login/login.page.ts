@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +8,12 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(public nav: NavController) { }
+  constructor(public nav: NavController, private menu: MenuController) { 
+    this.menu.enable(false);
+  }
 
   goToGallery(){
     this.nav.navigateForward('/gallery')
-    console.log('galleryfunc')
   }
 
   ngOnInit() {

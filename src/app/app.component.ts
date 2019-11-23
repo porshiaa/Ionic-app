@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -10,11 +10,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  navigate: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public nav: NavController
   ) {
+    this.menuNav();
     this.initializeApp();
   }
 
@@ -23,5 +26,32 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  menuNav()
+  {
+    this.navigate =
+    [
+      {
+        title : "Login",
+        url   : "/login",
+        icon  : "log-in"
+      },
+      {
+        title : "Dashboard",
+        url   : "/gallery",
+        icon  : "today"
+      },
+      {
+        title : "Photos",
+        url   : "#",
+        icon  : "images"
+      },
+      {
+        title: "Chat",
+        url : "#",
+        icon: "chatboxes"
+      }
+    ]
   }
 }
